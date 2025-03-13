@@ -1,0 +1,150 @@
+<Window x:Class="EloteWindows.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EloteWindows.Views"
+        mc:Ignorable="d"
+        Title="Elote Settings" 
+        Height="600" Width="450"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header with app icon -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="15" Background="Transparent">
+            <Image Source="/Resources/elote_icon.ico" Width="64" Height="64" Margin="0,0,15,0"/>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Elote" FontSize="22" FontWeight="Bold"/>
+                <TextBlock Text="AI-Powered Text Enhancement" FontSize="12" Foreground="Gray"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="LightGray" Margin="0,75,0,0"/>
+
+        <!-- Settings content -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,10,0,0">
+            <StackPanel Orientation="Vertical" Margin="15">
+                <!-- Provider selection -->
+                <StackPanel Margin="0,10,0,15">
+                    <TextBlock Text="LLM Provider" FontWeight="Medium" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="ProviderComboBox" SelectionChanged="ProviderComboBox_SelectionChanged">
+                        <ComboBoxItem Content="OpenAI"/>
+                        <ComboBoxItem Content="Anthropic"/>
+                    </ComboBox>
+                    <TextBlock Text="Select your AI provider" Foreground="Gray" FontSize="11" Margin="0,3,0,0"/>
+                </StackPanel>
+
+                <!-- API Key -->
+                <StackPanel Margin="0,0,0,15">
+                    <TextBlock Text="API Key" FontWeight="Medium" Margin="0,0,0,5"/>
+                    <PasswordBox x:Name="ApiKeyPasswordBox" PasswordChanged="ApiKeyPasswordBox_PasswordChanged"/>
+                    <TextBlock x:Name="ApiKeyHintTextBlock" Text="Your API key for the selected provider" 
+                              Foreground="Gray" FontSize="11" Margin="0,3,0,0"/>
+                </StackPanel>
+
+                <!-- Custom model -->
+                <StackPanel Margin="0,0,0,15">
+                    <TextBlock Text="Custom Model" FontWeight="Medium" Margin="0,0,0,5"/>
+                    <TextBox x:Name="CustomModelTextBox" TextChanged="CustomModelTextBox_TextChanged"/>
+                    <TextBlock x:Name="CustomModelHintTextBlock" Text="Leave empty to use the default model" 
+                              Foreground="Gray" FontSize="11" Margin="0,3,0,0"/>
+                </StackPanel>
+
+                <!-- Processing prompt -->
+                <StackPanel Margin="0,0,0,15">
+                    <TextBlock Text="Processing Prompt" FontWeight="Medium" Margin="0,0,0,5"/>
+                    <TextBox x:Name="PromptTextBox" TextChanged="PromptTextBox_TextChanged" 
+                            Height="80" TextWrapping="Wrap" AcceptsReturn="True"/>
+                    <TextBlock Text="Instructions for how to process the text" 
+                              Foreground="Gray" FontSize="11" Margin="0,3,0,0"/>
+                </StackPanel>
+
+                <!-- Saved prompts -->
+                <StackPanel Margin="0,0,0,15">
+                    <TextBlock Text="Saved Prompts" FontWeight="Medium" Margin="0,0,0,5"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox x:Name="PromptsComboBox" Grid.Column="0" 
+                                 SelectionChanged="PromptsComboBox_SelectionChanged"/>
+                        <Button x:Name="NewPromptButton" Grid.Column="1" Content="New" 
+                               Margin="5,0,0,0" Padding="8,0" Click="NewPromptButton_Click"/>
+                        <Button x:Name="EditPromptButton" Grid.Column="2" Content="Edit" 
+                               Margin="5,0,0,0" Padding="8,0" Click="EditPromptButton_Click"/>
+                        <Button x:Name="DeletePromptButton" Grid.Column="3" Content="Delete" 
+                               Margin="5,0,0,0" Padding="8,0" Click="DeletePromptButton_Click"/>
+                    </Grid>
+                    <TextBlock Text="Select, create or edit saved prompts" 
+                              Foreground="Gray" FontSize="11" Margin="0,3,0,0"/>
+                </StackPanel>
+
+                <!-- Notification settings -->
+                <StackPanel Margin="0,0,0,15">
+                    <TextBlock Text="Notifications" FontWeight="Medium" Margin="0,0,0,5"/>
+                    <CheckBox x:Name="ShowNotificationsCheckBox" Content="Show Notifications" 
+                             Margin="0,5,0,5" Checked="ShowNotificationsCheckBox_CheckChanged" 
+                             Unchecked="ShowNotificationsCheckBox_CheckChanged"/>
+                    <CheckBox x:Name="PlaySoundsCheckBox" Content="Play Notification Sounds" 
+                             Margin="0,5,0,5" Checked="PlaySoundsCheckBox_CheckChanged" 
+                             Unchecked="PlaySoundsCheckBox_CheckChanged"/>
+                    <TextBlock Text="Control how Elote notifies you of events" 
+                              Foreground="Gray" FontSize="11" Margin="0,3,0,0"/>
+                </StackPanel>
+
+                <!-- Keyboard shortcuts -->
+                <StackPanel Margin="0,0,0,15">
+                    <TextBlock Text="Keyboard Shortcuts" FontWeight="Medium" Margin="0,0,0,5"/>
+                    <Grid Margin="0,5,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Process Text:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="ProcessTextShortcutTextBox" IsReadOnly="True"/>
+                        <Button Grid.Column="2" Content="Set" Margin="5,0,0,0" Click="SetProcessTextShortcut_Click"/>
+                    </Grid>
+                    <Grid Margin="0,5,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Toggle Auto Mode:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="ToggleAutoModeShortcutTextBox" IsReadOnly="True"/>
+                        <Button Grid.Column="2" Content="Set" Margin="5,0,0,0" Click="SetToggleAutoModeShortcut_Click"/>
+                    </Grid>
+                    <TextBlock Text="Keyboard shortcuts for common actions" 
+                              Foreground="Gray" FontSize="11" Margin="0,3,0,0"/>
+                </StackPanel>
+
+                <!-- Auto mode -->
+                <StackPanel Margin="0,0,0,15">
+                    <CheckBox x:Name="AutoModeCheckBox" Content="Auto Mode" 
+                             Margin="0,5,0,5" Checked="AutoModeCheckBox_CheckChanged" 
+                             Unchecked="AutoModeCheckBox_CheckChanged"/>
+                    <TextBlock Text="Automatically process text when copied to clipboard" 
+                              Foreground="Gray" FontSize="11" Margin="0,3,0,0"/>
+                </StackPanel>
+
+                <!-- Startup settings -->
+                <StackPanel Margin="0,0,0,20">
+                    <CheckBox x:Name="StartWithWindowsCheckBox" Content="Start with Windows" 
+                             Margin="0,5,0,5" Checked="StartWithWindowsCheckBox_CheckChanged" 
+                             Unchecked="StartWithWindowsCheckBox_CheckChanged"/>
+                    <TextBlock Text="Launch Elote automatically when Windows starts" 
+                              Foreground="Gray" FontSize="11" Margin="0,3,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
