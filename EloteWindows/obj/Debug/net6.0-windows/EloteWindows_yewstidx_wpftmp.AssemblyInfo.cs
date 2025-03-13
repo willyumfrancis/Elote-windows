@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EloteWindows")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58a6e0c5cbfcac2f111e63c9ad6bb644ff3fc10e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca61777a951f9aac09b90f13d53a60a1bc0359f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("EloteWindows")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EloteWindows")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
