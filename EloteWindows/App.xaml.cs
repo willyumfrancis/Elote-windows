@@ -60,9 +60,18 @@ namespace EloteWindows
 
         private void CreateNotifyIcon()
         {
+            // Load the PNG image from resources
+            Uri iconUri = new Uri("pack://application:,,,/Resources/eloteicon.png");
+            var iconStream = Application.GetResourceStream(iconUri).Stream;
+            
+            // Convert PNG to icon
+            System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(iconStream);
+            System.IntPtr hIcon = bitmap.GetHicon();
+            System.Drawing.Icon icon = System.Drawing.Icon.FromHandle(hIcon);
+            
             _notifyIcon = new TaskbarIcon
             {
-                Icon = System.Drawing.SystemIcons.Application,
+                Icon = icon,
                 ToolTipText = "Elote - AI Text Enhancement"
             };
 
