@@ -1,0 +1,9 @@
+C:\Users\wmisiasz\Desktop\Elote\Elote-windows\EloteWindows\obj\Debug\net6.0-windows\EloteWindows.csproj.AssemblyReference.cache
+C:\Users\wmisiasz\Desktop\Elote\Elote-windows\EloteWindows\obj\Debug\net6.0-windows\Views\HotkeyDialog.baml
+C:\Users\wmisiasz\Desktop\Elote\Elote-windows\EloteWindows\obj\Debug\net6.0-windows\Views\PromptDialog.baml
+C:\Users\wmisiasz\Desktop\Elote\Elote-windows\EloteWindows\obj\Debug\net6.0-windows\Views\HotkeyDialog.g.cs
+C:\Users\wmisiasz\Desktop\Elote\Elote-windows\EloteWindows\obj\Debug\net6.0-windows\Views\PromptDialog.g.cs
+C:\Users\wmisiasz\Desktop\Elote\Elote-windows\EloteWindows\obj\Debug\net6.0-windows\Views\SettingsWindow.g.cs
+C:\Users\wmisiasz\Desktop\Elote\Elote-windows\EloteWindows\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\wmisiasz\Desktop\Elote\Elote-windows\EloteWindows\obj\Debug\net6.0-windows\EloteWindows_MarkupCompile.cache
+C:\Users\wmisiasz\Desktop\Elote\Elote-windows\EloteWindows\obj\Debug\net6.0-windows\EloteWindows_MarkupCompile.lref
