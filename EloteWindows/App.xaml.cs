@@ -6,6 +6,7 @@ using NHotkey;
 using NHotkey.Wpf;
 using System.Windows.Input;
 using Hardcodet.Wpf.TaskbarNotification;
+using EloteWindows.Utils;
 
 namespace EloteWindows
 {
@@ -101,7 +102,7 @@ namespace EloteWindows
             _notifyIcon.ContextMenu.Items.Add(exitMenuItem);
 
             // Double-click handler
-            _notifyIcon.TrayLeftMouseDoubleClick += (s, e) => ShowSettings();
+            _notifyIcon.DoubleClickCommand = new RelayCommand(() => ShowSettings());
         }
 
         private void RegisterHotkeys()
