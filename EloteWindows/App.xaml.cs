@@ -62,7 +62,7 @@ namespace EloteWindows
         {
             _notifyIcon = new TaskbarIcon
             {
-                Icon = new System.Drawing.Icon(Application.GetResourceStream(new Uri("pack://application:,,,/Resources/elote_icon.ico")).Stream),
+                Icon = System.Drawing.SystemIcons.Application,
                 ToolTipText = "Elote - AI Text Enhancement"
             };
 
